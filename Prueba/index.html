@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.min.css">
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* overflow: hidden; */
         }
         a {
             text-decoration: none;
             margin: 20px 0;
-            padding: 5px;
-            color: black;
+            padding: 15px;
+            border-radius: 50px;
             text-transform: uppercase;
             font-weight: bold;
 
@@ -25,8 +23,9 @@
             }
 
             &:hover {
-                background-color: crimson;
+                background-color: rgba(122, 150, 234, 0.796);
                 color: white;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             }
         }
 
@@ -39,10 +38,10 @@
         header#header {
             padding: 50px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
+            
             div.brand {
                 h1 {
-                    font-size: 2rem;
+                    font-size: 3rem;
 
                     span {
                         color: royalblue;
@@ -55,11 +54,8 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                overflow: hidden;
 
                 div.menu {
-                    text-align: right;
-
                     button {
                         font-size: 2rem;
                         background-color: transparent;
@@ -69,7 +65,7 @@
 
                     div.navbar {
                         display: flex;
-                        align-items: end;
+                        align-items: center;
                         flex-flow: column;
                         min-height: 100vh;
                         min-width: 20%;
@@ -79,11 +75,20 @@
                         top: 0;
                         left: 100%;
                         transition: left 0.5s;
-                        overflow-x: hidden;
                         z-index: 999;
 
                         a{
                             color: whitesmoke;
+                        }
+
+                        h2{
+                            color: white;
+                            font-size: 2rem;
+                            margin: 30px 0 20px 0;
+                            span{
+                                color: black;
+                                font-size: larger;
+                            }
                         }
                     }
                 }
@@ -103,7 +108,7 @@
                 <button>&#x268C;</button>
                 <div class="navbar">
                     <button>&#10006;</button>
-
+                    <h2>Learn<span>IA</span></h2>
                     <a href="#"> Servicios </a>
                     <a href="#"> Proyectos </a>
                     <a href="#"> Soporte </a>
@@ -113,29 +118,29 @@
         </nav>
     </header>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            let botonBurguer = document.querySelector("div.menu > button");
-            let botonCross = document.querySelector(".navbar button");
-            let navbar = document.querySelector("div.navbar");
-            console.log(navbar.innerWidt);
-
-            botonBurguer.addEventListener("click", () => {
-                if(window.innerWidth > 500){
-                    navbar.style.left = "80%";
-                    navbar.style.width = "20%";
-                    botonCross.style.color = "white";
-                }else{
-                    navbar.style.left = "0%";
-                    navbar.style.width = "100vw"
-                    botonCross.style.color = "white";
+        document.addEventListener("DOMContentLoaded", () => { //Lo usamos para asegurarnos de que el DOM esté listo
+            let botonBurguer = document.querySelector("div.menu > button"); //Seleccionamos el botón que acciona el navbar
+            let botonCross = document.querySelector(".navbar button"); //El botón que cierra el navbar
+            let navbar = document.querySelector("div.navbar"); //El propio navbar
+            
+            botonBurguer.addEventListener("click", () => { //Cada vez que se haga click en el boton principal
+                if(window.innerWidth > 500){ //Si el ancho de la pantalla es mayor que 500
+                    navbar.style.left = "80%"; //Le damos un 80% al navbar para que se vea en su totalidad --> además, al tener el transition ya en la clase y realizar un cambio en el valor left, se activará la animación
+                    navbar.style.width = "20%"; //Le ponemos un 20% de ancho
+                    botonCross.style.color = "white"; //Ponemos el boton de la X del navbar en blanco
+                }else{ //Si el ancho es menor de 500
+                    navbar.style.left = "0%"; //0% para que se vea el navbar en su totalidad
+                    navbar.style.width = "100vw" //Le ponemos el 100% del ancho de la pantalla
+                    botonCross.style.color = "white"; //Ponemos el boton de la X del navbar en blanco
                 }
                 
-                navbar.addEventListener("mouseleave",()=>{
-                    navbar.style.left = "100%";
+                navbar.addEventListener("mouseleave",()=>{ //Si se sale el cursos del navbar
+                    navbar.style.left = "100%"; //Se cierra
                 })
+
             })
-            botonCross.addEventListener("click", () =>{
-                navbar.style.left = "100%";
+            botonCross.addEventListener("click", () =>{ //Cada vez que se haga click en el boton de la X
+                navbar.style.left = "100%"; //Se cierra
             })
         })
     </script>
